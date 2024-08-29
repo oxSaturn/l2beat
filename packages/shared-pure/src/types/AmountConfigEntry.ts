@@ -16,6 +16,18 @@ export type AmountConfigEntry =
   | EscrowEntry
   | PremintedEntry
 
+export interface L1TranslatedToken extends AmountConfigBase {
+  type: 'translated'
+  l1Address: EthereumAddress | 'native'
+}
+
+export interface NativePremintedEntry extends AmountConfigBase {
+  type: 'preminted'
+  premintedBalance: number
+  address: 'native'
+  escrowAddress: EthereumAddress
+}
+
 export interface PremintedEntry extends AmountConfigBase {
   type: 'preminted'
   address: EthereumAddress | 'native'

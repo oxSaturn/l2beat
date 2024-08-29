@@ -73,6 +73,14 @@ export function getTvlAmountsConfig(
         }
       }
     }
+
+    if (project.sharedEscrow && project.sharedEscrow.type === 'polygon') {
+      // get tokens for sharedEscrow.sourceChain
+      // create L2TranslatedEntries
+      // tokenList.filter((t) => t.chain !== sharedEscrow.sourceChain)
+      // if sharedEscrow.nativeAsset === ETH
+      // create NativePreminted
+    }
   }
 
   return entries

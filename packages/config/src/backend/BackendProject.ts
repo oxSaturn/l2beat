@@ -35,6 +35,11 @@ export interface BackendProject {
   livenessConfig?: Layer2LivenessConfig
   finalityConfig?: Layer2FinalityConfig
   associatedTokens?: string[]
+  sharedEscrow?: {
+    type: 'polygon'
+    sourceChain: 'ethereum'
+    nativeAsset: 'ETH'
+  }
 }
 
 export interface BackendProjectEscrow {

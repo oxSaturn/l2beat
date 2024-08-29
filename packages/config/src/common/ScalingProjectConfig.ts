@@ -11,6 +11,11 @@ export interface ScalingProjectConfig {
   externalAssets?: ProjectExternalAssets
   /** List of contracts in which L1 funds are locked */
   escrows: ScalingProjectEscrow[]
+
+  sharedEscrow?: {
+    type: 'polygon'
+    nativeAsset: 'ETH'
+  }
 }
 
 export interface ProjectExternalAssets {
