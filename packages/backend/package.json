@@ -31,7 +31,8 @@
     "analyze-project": "ts-node --transpile-only scripts/analyzeProject.ts",
     "restore-tvl": "cd ./scripts/tvl-restore && ./tvl-restore.sh && cd -",
     "db:inspect": "yarn prisma studio",
-    "dev": "yarn build:dependencies && yarn start:dev"
+    "dev": "yarn build:dependencies && yarn start:dev",
+    "discovery-ui": "ts-node --transpile-only scripts/discovery-ui/discovery-ui.ts"
   },
   "dependencies": {
     "@bugsnag/js": "^7.22.3",
@@ -91,6 +92,8 @@
     "@types/supertest": "^2.0.12",
     "comment-json": "^4.2.3",
     "supertest": "^6.2.3",
-    "ts-node-dev": "^2.0.0"
+    "ts-node-dev": "^2.0.0",
+    "handlebars": "^4.7.7",
+    "express-handlebars": "^7.1.3"
   }
 }

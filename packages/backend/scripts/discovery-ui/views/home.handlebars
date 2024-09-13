@@ -1,0 +1,8 @@
+<h1 class="text-2xl font-bold mb-4">HTMX Greeter with Handlebars</h1>
+<form hx-post="/greet" hx-target="#result" class="mb-4">
+    <input type="text" name="name" placeholder="Enter your name" class="border rounded p-2 w-full mb-2">
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Greet
+    </button>
+</form>
+<div id="result" class="mt-4 text-lg"></div>
