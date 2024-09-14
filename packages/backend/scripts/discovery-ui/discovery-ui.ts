@@ -27,12 +27,19 @@ app.get('/greet', (req, res) => {
 })
 
 // Endpoint to start the command and return the SSE connection div
-app.get('/start-command', (_req, res) => {
-  res.send(getSSEDiv('/stream-command'))
+app.get('/start-command', (req, res) => {
+  const { terminalId } = req.query
+  if (terminalId === undefined) {
+    throw new Error('Missing terminalId')
+  }
+  else {
+    res.send(getSSEDiv('/stream-command', terminalId as string))
+  }
 })
 
 app.get('/stream-command', (req, res) => {
-  streamCLI(req, res, 'ls', ['-la'])
+  // streamCLI(req, res, 'ls', ['-la'])
+  streamCLI(req, res, 'yarn', ['discover', 'ethereum', 'zora', '--dev'])
 })
 
 app.listen(port, () => {

@@ -1,29 +1,33 @@
-<header class="bg-dark-surface text-dark-text-bright px-4 py-2 border-b border-dark-border">
-    <h1 class="text-2xl font-bold">Discovery UI</h1>
-</header>
-<main class="flex-grow flex p-4 space-x-4">
-    <nav class="w-64 bg-dark-surface rounded-lg border border-dark-border">
-        <div class="space-y-2 p-4">
-            <button hx-get="/start-command" hx-target="#terminal" hx-swap="innerHTML" class="w-full bg-dark-button hover:bg-dark-button-hover text-dark-text-bright font-bold py-2 px-4 rounded transition duration-200" >
-                Run discovery
-            </button>
-            <button hx-get="/greet?name=test" hx-target="#terminal" hx-swap="innerHTML" class="w-full bg-dark-button hover:bg-dark-button-hover text-dark-text-bright font-bold py-2 px-4 rounded transition duration-200">
-                Greet
-            </button>
-            <button class="w-full bg-dark-button hover:bg-dark-button-hover text-dark-text-bright font-bold py-2 px-4 rounded transition duration-200">
-                Button 3
-            </button>
-            <button class="w-full bg-dark-button hover:bg-dark-button-hover text-dark-text-bright font-bold py-2 px-4 rounded transition duration-200">
-                Button 4
-            </button>
-        </div>
+<div class="flex flex-col h-screen w-screen overflow-hidden bg-gray-900 text-white">
+  <header class="bg-gray-800 p-4">
+    <h1 class="text-xl font-bold">Discovery UI</h1>
+  </header>
+  
+  <div class="flex flex-1 overflow-hidden">
+    <nav class="w-64 bg-gray-800 p-4 space-y-4">
+      <button hx-get="/start-command?terminalId=terminal" hx-target="#terminal" hx-swap="innerHTML" class="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded">
+          Run discovery
+      </button>
+      <button hx-get="/greet?name=test" hx-target="#terminal" hx-swap="innerHTML" class="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded">
+          Greet
+      </button>
+      <button class="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded">
+        Button 3
+      </button>
+      <button class="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded">
+        Button 4
+      </button>
     </nav>
     
-    <section class="flex-grow bg-dark-surface border border-dark-border rounded-lg">
-        <div class="h-full p-4">
-            <h2 class="text-xl font-semibold mb-4 text-dark-text-bright">Main Content Area</h2>
-            <p>This is the main content area that spans the remaining width and height.</p>
-            <pre id="terminal">TERMINAL</pre>
+    <main class="flex-1 p-4 overflow-hidden">
+      <div class="h-full bg-black rounded-lg p-4 overflow-hidden flex flex-col">
+        <div 
+          id="terminal"
+          class="flex-1 overflow-auto font-mono text-green-400 whitespace-pre-wrap break-words"
+        >
         </div>
-    </section>
-</main>
+      </div>
+    </main>
+
+  </div>
+</div>

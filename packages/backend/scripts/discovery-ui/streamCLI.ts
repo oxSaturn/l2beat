@@ -2,14 +2,14 @@ import { spawn } from 'child_process'
 import { Request, Response } from 'express'
 
 const STREAM_CLOSE_EVENT = 'done'
-export function getSSEDiv(streamUrl: string) {
+export function getSSEDiv(streamUrl: string, terminalDivId: string) {
   return `
       <div
           hx-ext="sse"
           sse-connect="${streamUrl}"
           sse-swap="message"
           sse-close="${STREAM_CLOSE_EVENT}"
-          hx-swap="beforeend"
+          hx-swap="beforeend scroll:#${terminalDivId}:bottom"
       ></div>
   `
 }
