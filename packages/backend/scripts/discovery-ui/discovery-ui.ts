@@ -31,9 +31,8 @@ app.get('/start-command', (req, res) => {
   const { terminalId } = req.query
   if (terminalId === undefined) {
     throw new Error('Missing terminalId')
-  }
-  else {
-    res.send(getSSEDiv('/stream-command', terminalId as string))
+  } else {
+    res.send(getSSEDiv('/stream-command', terminalId.toString()))
   }
 })
 
