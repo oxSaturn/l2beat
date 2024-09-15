@@ -32,7 +32,7 @@
     "restore-tvl": "cd ./scripts/tvl-restore && ./tvl-restore.sh && cd -",
     "db:inspect": "yarn prisma studio",
     "dev": "yarn build:dependencies && yarn start:dev",
-    "discovery-ui": "ts-node --transpile-only scripts/discovery-ui/discovery-ui.ts"
+    "discovery-ui": "ts-node-dev --transpile-only scripts/discovery-ui/discovery-ui.ts"
   },
   "dependencies": {
     "@bugsnag/js": "^7.22.3",
