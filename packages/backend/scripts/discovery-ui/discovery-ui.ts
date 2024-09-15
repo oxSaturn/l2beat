@@ -82,6 +82,14 @@ app.get('/partials/cli-terminal', async (_req, res) => {
   })
 })
 
+app.get('/partials/json-view', async (_req, res) => {
+  const contentRaw = configReader.readDiscovery('zora', 'ethereum')
+  const content = JSON.stringify(contentRaw, null, 2)
+  res.render('partials/jsonView', { content, layout: false }, (_err, html) => {
+    res.send(html)
+  })
+})
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`)
 })

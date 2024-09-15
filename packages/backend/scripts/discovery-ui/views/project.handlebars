@@ -4,6 +4,10 @@
 
 <div class="flex flex-1 overflow-hidden space-x-4">
   <nav class="w-64 bg-gray-800 p-4 space-y-4">
+    <button hx-get="/partials/json-view" hx-target="#content" hx-swap="innerHTML" hx-trigger="click, load"
+      class="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded">
+      View discovered.json
+    </button>
     <button hx-get="/partials/cli-terminal" hx-target="#content" hx-swap="innerHTML"
       class="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded">
       Run discovery
@@ -11,9 +15,6 @@
     <button hx-get="/greet?name=test" hx-target="#terminal" hx-swap="innerHTML"
       class="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded">
       Greet
-    </button>
-    <button class="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded">
-      Button 3
     </button>
     <button class="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded">
       Button 4
