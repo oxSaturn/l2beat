@@ -10,7 +10,13 @@ const port = 3000
 const configReader = new ConfigReader()
 
 // Set up Handlebars
-app.engine('handlebars', engine())
+const hbs = engine({
+  defaultLayout: 'main',
+  layoutsDir: path.join(__dirname, 'views/layouts'),
+  partialsDir: path.join(__dirname, 'views/partials'),
+})
+
+app.engine('handlebars', hbs)
 app.set('view engine', 'handlebars')
 // Add views directory, but relative to current's file directory:
 app.set('views', path.join(__dirname, 'views'))
@@ -30,7 +36,7 @@ app.get('/projects/:chain/:project', (req, res) => {
 
 app.get('/greet', (req, res) => {
   const { name } = req.query
-  res.render('partials/greeting', { name }, (_err, html) => {
+  res.render('partials/greeting', { name, layout: false }, (_err, html) => {
     res.send(html)
   })
 })
@@ -50,7 +56,7 @@ app.get('/stream-command', (req, res) => {
   streamCLI(req, res, 'yarn', ['discover', 'ethereum', 'zora', '--dev'])
 })
 
-app.get('/partials/projects-list', async (_, res) => {
+app.get('/partials/projects-list', async (_req, res) => {
   const chainConfigs = await Promise.all(
     configReader
       .readAllChains()
@@ -61,7 +67,17 @@ app.get('/partials/projects-list', async (_, res) => {
     chain: config.chain,
   }))
 
-  res.render('partials/projectsList', { projects }, (_err, html) => {
+  res.render(
+    'partials/projectsList',
+    { projects, layout: false },
+    (_err, html) => {
+      res.send(html)
+    },
+  )
+})
+
+app.get('/partials/cli-terminal', async (_req, res) => {
+  res.render('partials/cliTerminal', { layout: false }, (_err, html) => {
     res.send(html)
   })
 })
