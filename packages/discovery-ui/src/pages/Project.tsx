@@ -1,10 +1,9 @@
 import { ConfigReader } from '@l2beat/discovery'
-import { clsx } from 'clsx'
 import React from 'react'
 import { Page } from '../common/Page'
 import { DISCOVERY_ROOT_PATH } from '../common/constants'
-import { FieldValueDisplay } from '../components/FieldValue/FieldValueDisplay'
-import { FieldValue, parseFieldValue } from '../components/FieldValue/type'
+import { Field } from '../components/Field/Field'
+import { FieldValue, parseFieldValue } from '../components/Field/type'
 
 export interface ProjectPageProps {
   projectName: string
@@ -34,8 +33,22 @@ export function ProjectPage(props: ProjectPageProps) {
   }
 
   const addressNameMap: Record<string, string> = {}
+  for (const override of config.overrides) {
+    if (override.ignoreDiscovery) {
+      addressNameMap[override.address.toString()] = '<ignored>'
+    }
+  }
   for (const contract of discovery.contracts) {
     addressNameMap[contract.address.toString()] = contract.name
+    const $implementation = contract.values?.['$implementation']
+    const values = Array.isArray($implementation)
+      ? $implementation
+      : [$implementation]
+    for (const item of values) {
+      if (typeof item === 'string') {
+        addressNameMap[item] ??= '<impl>'
+      }
+    }
   }
   for (const eoa of discovery.eoas) {
     addressNameMap[eoa.address.toString()] = 'EOA'
@@ -84,26 +97,15 @@ export function ProjectPage(props: ProjectPageProps) {
                   {entry.address}
                 </a>
               </div>
-              <ol className="pl-4">
+              <ol>
                 {entry.fields.map((field, i) => (
-                  <li key={i}>
-                    <div className="flex items-baseline gap-2">
-                      <p
-                        className={clsx(
-                          'text-right font-mono',
-                          field.name.startsWith('$') && 'text-green-700',
-                        )}
-                      >
-                        {field.name}:
-                      </p>
-                      <FieldValueDisplay value={field.value} />
-                    </div>
-                    {field.description && (
-                      <p className="col-span-2 text-gray-700 text-sm italic">
-                        {field.description}
-                      </p>
-                    )}
-                  </li>
+                  <Field
+                    key={i}
+                    name={field.name}
+                    description={field.description}
+                    value={field.value}
+                    level={0}
+                  />
                 ))}
               </ol>
             </li>

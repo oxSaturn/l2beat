@@ -51,12 +51,12 @@ export interface UnknownFieldValue {
 
 export function parseFieldValue(
   value: unknown,
-  addressNameMap: Record<string, string> = {},
+  names: Record<string, string> = {},
 ): FieldValue {
   if (typeof value === 'string') {
     if (/^0x[a-f\d]*$/i.test(value)) {
       if (value.length === 42) {
-        return { type: 'address', name: addressNameMap[value], address: value }
+        return { type: 'address', name: names[value], address: value }
       } else {
         return { type: 'hex', value }
       }
@@ -73,6 +73,25 @@ export function parseFieldValue(
 
   if (typeof value === 'boolean') {
     return { type: 'boolean', value }
+  }
+
+  if (Array.isArray(value)) {
+    return {
+      type: 'array',
+      values: value.map((v) => parseFieldValue(v, names)),
+    }
+  }
+
+  if (typeof value === 'object' && value !== null) {
+    return {
+      type: 'object',
+      value: Object.fromEntries(
+        Object.entries(value).map(([key, value]) => [
+          key,
+          parseFieldValue(value, names),
+        ]),
+      ),
+    }
   }
 
   return {
