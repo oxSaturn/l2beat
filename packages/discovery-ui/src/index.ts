@@ -1,5 +1,5 @@
 import express from 'express'
-import { STATIC_PATH } from './constants'
+import { STATIC_PATH } from './common/constants'
 import { createRouter } from './router'
 
 const app = express()
