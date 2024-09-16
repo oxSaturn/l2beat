@@ -5,11 +5,18 @@ import { FieldValue } from './type'
 export interface FieldProps {
   name: string
   description?: string
+  untracked?: boolean
   value: FieldValue
   level: number
 }
 
-export function Field({ name, description, value, level }: FieldProps) {
+export function Field({
+  name,
+  description,
+  untracked,
+  value,
+  level,
+}: FieldProps) {
   let inlineDisplay: ReactNode = null
   let blockDisplay: ReactNode = null
 
@@ -105,11 +112,16 @@ export function Field({ name, description, value, level }: FieldProps) {
       <div className="grid grid-cols-[auto_1fr] items-baseline gap-x-2">
         <p
           className={clsx(
-            'w-min min-w-[3ch] text-right font-mono',
+            'w-max min-w-[3ch] text-right font-mono',
             name.startsWith('$') && 'text-green-700',
             level > 0 && 'text-sm',
           )}
         >
+          {untracked && (
+            <span className="text-gray-700 text-xs uppercase">
+              Not watched{' '}
+            </span>
+          )}
           {name}:
         </p>
         {inlineDisplay}

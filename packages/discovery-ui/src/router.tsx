@@ -3,6 +3,8 @@ import React from 'react'
 import { renderPage } from './common/renderPage'
 import { HomePage } from './pages/Home'
 import { ProjectPage } from './pages/Project'
+import { z } from 'zod'
+import { openCode } from './commands/openCode'
 
 export function createRouter() {
   const router = Router()
@@ -20,6 +22,17 @@ export function createRouter() {
       />,
     )
     res.send(page)
+  })
+
+  const CodeQuery = z.object({
+    project: z.string(),
+    chain: z.string(),
+    address: z.string(),
+  })
+  router.get('/code', function (req, res) {
+    const query = CodeQuery.parse(req.query)
+    openCode(query.project, query.chain, query.address)
+    res.status(204).send('')
   })
 
   return router

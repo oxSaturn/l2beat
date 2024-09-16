@@ -26,7 +26,8 @@
     "clsx": "^2.1.1",
     "express": "^4.21.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.11"
