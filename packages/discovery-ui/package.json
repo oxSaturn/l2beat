@@ -1,0 +1,20 @@
+{
+  "name": "@l2beat/discovery-ui",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "node -r esbuild-register src",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "format": "biome format .",
+    "format:fix": "biome format --write .",
+    "lint:fix": "biome check --formatter-enabled=false --apply .",
+    "lint": "biome check --formatter-enabled=false .",
+    "test": "mocha"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
