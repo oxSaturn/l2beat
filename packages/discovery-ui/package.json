@@ -6,7 +6,10 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "start": "node -r esbuild-register src",
-    "build": "tsc -p tsconfig.build.json",
+    "watch:js": "node --watch -r esbuild-register src",
+    "watch:css": "yarn build:css --watch",
+    "build:js": "tsc -p tsconfig.build.json",
+    "build:css": "tailwindcss -i ./src/style.css -o ./static/style.css",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
     "format": "biome format .",
@@ -15,6 +18,16 @@
     "lint": "biome check --formatter-enabled=false .",
     "test": "mocha"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@l2beat/discovery": "*",
+    "@types/express": "^4.17.21",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "express": "^4.21.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.11"
+  }
 }
