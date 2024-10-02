@@ -35,7 +35,7 @@
         "permissions": [
           {
             "type": "configure",
-            "description": "it can update the preconfer address, the batch submitter (Sequencer) address and the gas configuration of the system."
+            "description": "can update the unsafe block signer address, the batch submitter (Sequencer) address and the gas configuration of the system."
           }
         ]
       }
