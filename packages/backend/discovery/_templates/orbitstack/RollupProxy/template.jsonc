@@ -1,6 +1,6 @@
 {
   "$schema": "../../../../../discovery/schemas/contract.v2.schema.json",
-  "description": "Manages rollup components, list of Stakers and Validators. Entry point for Validators creating new Rollup Nodes (state commits) and Challengers submitting fraud proofs.",
+  "description": "Manages rollup state commitments and general rollup configuration, lists Stakers and Validators. Entry point for Validators creating new Rollup Nodes (state commitments) and Challengers submitting fraud proofs.",
   "ignoreMethods": [
     // Execution reverted
     "proxiableUUID"
@@ -11,7 +11,6 @@
     "latestNodeCreated"
   ],
   "fields": {
-    // when this changes, it means the validators have changed
     "confirmPeriodBlocks": {
       "description": "Challenge period. (Number of blocks until a node is confirmed)."
     },
@@ -20,6 +19,7 @@
       "returnType": "(ArbOsWasmModuleRoot)"
     },
     "setValidatorCount": {
+      "description": "EventCount: Increments on validator change.",
       "handler": {
         "type": "eventCount",
         "topics": [
@@ -31,6 +31,7 @@
       }
     },
     "challenges": {
+      "description": "List of started challenges from Events.",
       "handler": {
         "type": "stateFromEvent",
         "event": "RollupChallengeStarted",
@@ -44,7 +45,17 @@
     },
     "validators": {
       "target": {
-        "role": "Validator"
+        "role": "Validator",
+        "permissions": [
+          {
+            "type": "propose",
+            "description": "can submit new state roots to the RollupProxy contract on the host / settlement chain."
+          },
+          {
+            "type": "challenge",
+            "description": "can challenge state roots on the host / settlement chain."
+          }
+        ]
       },
       "handler": {
         "type": "arbitrumActors",

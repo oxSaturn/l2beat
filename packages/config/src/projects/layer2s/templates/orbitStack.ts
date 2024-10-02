@@ -127,6 +127,7 @@ export interface OrbitStackConfigCommon {
   nonTemplateContractRisks?: ScalingProjectRisk[]
   nativeAddresses?: Record<string, ScalingProjectContract[]>
   nativePermissions?: Record<string, ScalingProjectPermission[]> | 'UnderReview'
+  useDiscoveryMetaOnly?: boolean
 }
 
 export interface OrbitStackConfigL3 extends OrbitStackConfigCommon {
@@ -342,7 +343,9 @@ export function orbitStackCommon(
   return {
     id: ProjectId(templateVars.discovery.projectName),
     contracts: {
-      addresses: unionBy(
+      addresses: templateVars.useDiscoveryMetaOnly === true
+      ? templateVars.discovery.getDiscoveredContracts()
+      : unionBy(
         [
           ...(templateVars.nonTemplateContracts ?? []),
           ...resolvedTemplates.contracts,
@@ -456,7 +459,12 @@ export function orbitStackCommon(
         templateVars.nonTemplateTechnology?.otherConsiderations ??
         EVM_OTHER_CONSIDERATIONS,
     },
-    permissions: [
+    permissions: templateVars.useDiscoveryMetaOnly === true
+    ? [
+        ...templateVars.discovery.getDiscoveredRoles(),
+        ...templateVars.discovery.getDiscoveredPermissions(),
+      ]
+    : [
       sequencers,
       validators,
       ...resolvedTemplates.permissions,
