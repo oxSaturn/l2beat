@@ -1,16 +1,17 @@
-import { upcomingL2 } from './templates/upcoming'
+import { UnixTime } from '@l2beat/shared-pure'
+import { ProjectDiscovery } from '../../discovery/ProjectDiscovery'
+import { opStackL2 } from './templates/opStack'
 import { Layer2 } from './types'
 
-export const world: Layer2 = upcomingL2({
-  id: 'world',
+const discovery = new ProjectDiscovery('world')
+
+export const world: Layer2 = opStackL2({
   display: {
     name: 'World Chain',
     slug: 'world',
     description:
       "World Chain is a new OP Stack L2 that will leverage World ID's Proof of Personhood.",
-    purposes: ['Universal'],
-    category: 'Optimistic Rollup',
-    provider: 'OP Stack',
+    purposes: ['Universal', 'Identity'],
     links: {
       websites: ['https://worldcoin.org/world-chain'],
       apps: ['https://worldcoin.org/download-app'],
@@ -26,4 +27,7 @@ export const world: Layer2 = upcomingL2({
       ],
     },
   },
+  discoveryDrivenData: true,
+  discovery,
+  genesisTimestamp: new UnixTime(1661178839),
 })
