@@ -132,6 +132,11 @@ export function getTvlAmountsConfigForProject(
     entries.push(configEntry)
   }
 
+  const chainMap: Record<number, ChainConfig> = {}
+  for (const chain of chains) {
+    chainMap[chain.chainId] = chain
+  }
+
   for (const escrow of project.escrows) {
     switch (escrow.sharedEscrow?.type) {
       case 'AggLayer': {
