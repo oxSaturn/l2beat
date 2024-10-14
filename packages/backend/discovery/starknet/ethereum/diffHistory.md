@@ -1,3 +1,254 @@
+Generated with discovered.json: 0x5d37fccfb5edf37c3ee0138cd4eb710bce472eda
+
+# Diff at Mon, 14 Oct 2024 08:01:09 GMT:
+
+- author: sekuba (<29250140+sekuba@users.noreply.github.com>)
+- comparing to: main@186c5b4b1df46dbe8d8e13f7b45e2017c7286531 block: 20878376
+- current block number: 20962479
+
+## Description
+
+Starkgate escrows are batch-upgraded to the same new implementation. The only change is an addidtional `require()` in the flow of legacy token withdrawals.
+
+## Watched changes
+
+```diff
+    contract WBTCBridge (0x283751A21eafBFcD52297820D27C1f1963D9b5b4) {
+    +++ description: None
+      values.$implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+      values.$pastUpgrades.7:
++        ["2024-10-13T15:59:11.000Z",["0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"]]
+      values.$upgradeCount:
+-        7
++        8
+      values.identify:
+-        "StarkWare_StarknetERC20Bridge_2.0_4"
++        "StarkWare_StarknetERC20Bridge_2.0_5"
+      values.implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+    }
+```
+
+```diff
+    contract FXSBridge (0x66ba83ba3D3AD296424a2258145d9910E9E40B7C) {
+    +++ description: None
+      values.$implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+      values.$pastUpgrades.2:
++        ["2024-10-13T15:59:11.000Z",["0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"]]
+      values.$upgradeCount:
+-        2
++        3
+      values.identify:
+-        "StarkWare_StarknetERC20Bridge_2.0_4"
++        "StarkWare_StarknetERC20Bridge_2.0_5"
+      values.implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+    }
+```
+
+```diff
+    contract USDTBridge (0xbb3400F107804DFB482565FF1Ec8D8aE66747605) {
+    +++ description: None
+      values.$implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+      values.$pastUpgrades.7:
++        ["2024-10-13T15:59:11.000Z",["0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"]]
+      values.$upgradeCount:
+-        7
++        8
+      values.identify:
+-        "StarkWare_StarknetERC20Bridge_2.0_4"
++        "StarkWare_StarknetERC20Bridge_2.0_5"
+      values.implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+    }
+```
+
+```diff
+    contract wstETHBridge (0xBf67F59D2988A46FBFF7ed79A621778a3Cd3985B) {
+    +++ description: None
+      values.$implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+      values.$pastUpgrades.3:
++        ["2024-10-13T15:59:11.000Z",["0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"]]
+      values.$upgradeCount:
+-        3
++        4
+      values.identify:
+-        "StarkWare_StarknetERC20Bridge_2.0_4"
++        "StarkWare_StarknetERC20Bridge_2.0_5"
+      values.implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+    }
+```
+
+```diff
+    contract STRKBridge (0xcE5485Cfb26914C5dcE00B9BAF0580364daFC7a4) {
+    +++ description: None
+      values.$implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+      values.$pastUpgrades.5:
++        ["2024-10-13T15:59:11.000Z",["0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"]]
+      values.$upgradeCount:
+-        5
++        6
+      values.identify:
+-        "StarkWare_StarknetERC20Bridge_2.0_4"
++        "StarkWare_StarknetERC20Bridge_2.0_5"
+      values.implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+    }
+```
+
+```diff
+    contract rETHBridge (0xcf58536D6Fab5E59B654228a5a4ed89b13A876C2) {
+    +++ description: None
+      values.$implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+      values.$pastUpgrades.3:
++        ["2024-10-13T15:59:11.000Z",["0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"]]
+      values.$upgradeCount:
+-        3
++        4
+      values.identify:
+-        "StarkWare_StarknetERC20Bridge_2.0_4"
++        "StarkWare_StarknetERC20Bridge_2.0_5"
+      values.implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+    }
+```
+
+```diff
+    contract sfrxETHBridge (0xd8E8531fdD446DF5298819d3Bc9189a5D8948Ee8) {
+    +++ description: None
+      values.$implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+      values.$pastUpgrades.2:
++        ["2024-10-13T15:59:11.000Z",["0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"]]
+      values.$upgradeCount:
+-        2
++        3
+      values.identify:
+-        "StarkWare_StarknetERC20Bridge_2.0_4"
++        "StarkWare_StarknetERC20Bridge_2.0_5"
+      values.implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+    }
+```
+
+```diff
+    contract FRAXBridge (0xDc687e1E0B85CB589b2da3C47c933De9Db3d1ebb) {
+    +++ description: None
+      values.$implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+      values.$pastUpgrades.2:
++        ["2024-10-13T15:59:11.000Z",["0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"]]
+      values.$upgradeCount:
+-        2
++        3
+      values.identify:
+-        "StarkWare_StarknetERC20Bridge_2.0_4"
++        "StarkWare_StarknetERC20Bridge_2.0_5"
+      values.implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+    }
+```
+
+```diff
+    contract LUSDBridge (0xF3F62F23dF9C1D2C7C63D9ea6B90E8d24c7E3DF5) {
+    +++ description: None
+      values.$implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+      values.$pastUpgrades.2:
++        ["2024-10-13T15:56:47.000Z",["0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"]]
+      values.$upgradeCount:
+-        2
++        3
+      values.identify:
+-        "StarkWare_StarknetERC20Bridge_2.0_4"
++        "StarkWare_StarknetERC20Bridge_2.0_5"
+      values.implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+    }
+```
+
+```diff
+    contract USDCBridge (0xF6080D9fbEEbcd44D89aFfBFd42F098cbFf92816) {
+    +++ description: None
+      values.$implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+      values.$pastUpgrades.7:
++        ["2024-10-13T15:59:11.000Z",["0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"]]
+      values.$upgradeCount:
+-        7
++        8
+      values.identify:
+-        "StarkWare_StarknetERC20Bridge_2.0_4"
++        "StarkWare_StarknetERC20Bridge_2.0_5"
+      values.implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+    }
+```
+
+```diff
+    contract UNIBridge (0xf76e6bF9e2df09D0f854F045A3B724074dA1236B) {
+    +++ description: None
+      values.$implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+      values.$pastUpgrades.2:
++        ["2024-10-13T15:57:11.000Z",["0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"]]
+      values.$upgradeCount:
+-        2
++        3
+      values.identify:
+-        "StarkWare_StarknetERC20Bridge_2.0_4"
++        "StarkWare_StarknetERC20Bridge_2.0_5"
+      values.implementation:
+-        "0x179FA59e4D19ac7C7b4e3daa0Cd6557a553656A0"
++        "0x6ad74D4B79A06A492C288eF66Ef868Dd981fdC85"
+    }
+```
+
+## Source code changes
+
+```diff
+.../{.flat@20878376 => .flat}/FRAXBridge/StarknetERC20Bridge.sol | 9 +++++++--
+ .../{.flat@20878376 => .flat}/FXSBridge/StarknetERC20Bridge.sol  | 9 +++++++--
+ .../{.flat@20878376 => .flat}/LUSDBridge/StarknetERC20Bridge.sol | 9 +++++++--
+ .../{.flat@20878376 => .flat}/STRKBridge/StarknetERC20Bridge.sol | 9 +++++++--
+ .../{.flat@20878376 => .flat}/UNIBridge/StarknetERC20Bridge.sol  | 9 +++++++--
+ .../{.flat@20878376 => .flat}/USDCBridge/StarknetERC20Bridge.sol | 9 +++++++--
+ .../{.flat@20878376 => .flat}/USDTBridge/StarknetERC20Bridge.sol | 9 +++++++--
+ .../{.flat@20878376 => .flat}/WBTCBridge/StarknetERC20Bridge.sol | 9 +++++++--
+ .../{.flat@20878376 => .flat}/rETHBridge/StarknetERC20Bridge.sol | 9 +++++++--
+ .../sfrxETHBridge/StarknetERC20Bridge.sol                        | 9 +++++++--
+ .../wstETHBridge/StarknetERC20Bridge.sol                         | 9 +++++++--
+ 11 files changed, 77 insertions(+), 22 deletions(-)
+```
+
 Generated with discovered.json: 0x189728c26919137285f5bec6804ea26f63b62ce1
 
 # Diff at Wed, 02 Oct 2024 14:21:38 GMT:
