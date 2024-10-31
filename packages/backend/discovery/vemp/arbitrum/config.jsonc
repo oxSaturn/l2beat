@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../../discovery/schemas/config.v2.schema.json",
+  "chain": "arbitrum",
+  "name": "vemp",
+  "initialAddresses": [
+    "0x1cE4b465a2A47444a74178aAD0f72EBF4cc977b4" // Inbox
+  ],
+  "names": {
+    "0x2bf43034b9559643e986A2fE3cE015a18247b904": "OevNetworkMultisig",
+    "0x60E7C0Be7dB81a3DbAd851D094bc211CC3B177A3": "RollupProxy"
+  },
+  "overrides": {}
+}
